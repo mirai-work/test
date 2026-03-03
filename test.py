@@ -526,7 +526,7 @@ class App:
             for p in self.title_particles:
                 p.update()
             # allow skipping after dragon show time
-            if self.title_timer > DRAGON_SHOW_TIME and pyxel.btnp(pyxel.KEY_RETURN):
+            if self.title_timer > DRAGON_SHOW_TIME and pyxel.btnp(pyxel.KEY_RETURN) or pyxel.btnp(pyxel.GAMEPAD1_BUTTON_A):
                 self.show_title = False
                 self.start_interlude(is_tutorial=True) # Start tutorial interlude
             return
@@ -911,4 +911,5 @@ class App:
                 pyxel.text(center_x - len(end_text)*2 + 1, center_y + 1, end_text, 0)
                 pyxel.text(center_x - len(end_text)*2, center_y, end_text, 7)
 # 実行
+
 App()
