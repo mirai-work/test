@@ -8,7 +8,7 @@ y = 60
 def update():
     global x, y
     
-    if pyxel.btn(pyxel.KEY_LEFT) or pyxel.btn(pyxel.GAMEPAD1_BUTTON_A):
+    if pyxel.btn(pyxel.KEY_LEFT) or pyxel.btn(pyxel.GAMEPAD1_BUTTON_B):
         x = max(x - 2, 0)
     if pyxel.btn(pyxel.KEY_RIGHT) or pyxel.btn(pyxel.GAMEPAD1_BUTTON_DPAD_RIGHT):
         x = min(x + 2, 160-10)
@@ -25,4 +25,5 @@ def draw():
     pyxel.rect(x, y, 10, 10, 11)
 
 pyxel.run(update, draw)
+
 
