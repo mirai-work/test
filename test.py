@@ -155,7 +155,7 @@ class Player:
         self.y = max(Player.SIZE, min(SCREEN_H - Player.SIZE, self.y + dy))
 
         self.shot_timer += 1
-        if pyxel.btn(pyxel.KEY_SPACE) or pyxel.btnp(pyxel.GAMEPAD1_BUTTON_A) and self.shot_timer % 5 == 0:
+        if pyxel.btn(pyxel.KEY_SPACE) or pyxel.btn(pyxel.GAMEPAD1_BUTTON_A) and self.shot_timer % 1 == 0:
             if self.power == 1:
                 self.bullets.append(Bullet(self.x + 6, self.y, dx=3, color=11))
             elif self.power == 2:
@@ -474,7 +474,7 @@ class App:
         if self.is_tutorial_interlude:
             # Tutorial interlude (Stage -1 -> 0, which is actual Stage 1)
             # End interlude only when user presses ENTER
-            if pyxel.btnp(pyxel.KEY_RETURN) or pyxel.btnp(pyxel.GAMEPAD1_BUTTON_A) and self.interlude_timer > 30:
+            if pyxel.btnp(pyxel.KEY_RETURN) or pyxel.btnp(pyxel.GAMEPAD1_BUTTON_START) and self.interlude_timer > 30:
                 self.end_interlude()
             return
         
@@ -526,14 +526,14 @@ class App:
             for p in self.title_particles:
                 p.update()
             # allow skipping after dragon show time
-            if self.title_timer > DRAGON_SHOW_TIME and pyxel.btnp(pyxel.KEY_RETURN) or pyxel.btnp(pyxel.GAMEPAD1_BUTTON_A):
+            if self.title_timer > DRAGON_SHOW_TIME and pyxel.btnp(pyxel.KEY_RETURN) or pyxel.btnp(pyxel.GAMEPAD1_BUTTON_START):
                 self.show_title = False
                 self.start_interlude(is_tutorial=True) # Start tutorial interlude
             return
 
         # GAME OVER
         if self.game_over:
-            if pyxel.btnp(pyxel.KEY_R):
+            if pyxel.btnp(pyxel.KEY_R) or pyxel.btn(pyxel.GAMEPAD1_BUTTON_B):
                 self.reset(is_initial_start=False)
                 self.start_interlude(is_tutorial=True) # Restart with tutorial
             return
@@ -913,4 +913,5 @@ class App:
 # 実行
 
 App()
+
 
