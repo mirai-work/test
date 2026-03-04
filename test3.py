@@ -13,7 +13,7 @@ class Game:
                 self.state = "PLAYING"
         elif self.state == "PLAYING":
             self.score += 1
-            if self.score >= 100:
+            if self.score >= 10:
                 self.state = "GAMEOVER"
         elif self.state == "GAMEOVER":
             if pyxel.btnp(pyxel.KEY_SPACE) or pyxel.btnp(pyxel.GAMEPAD1_BUTTON_A):
@@ -35,4 +35,5 @@ class Game:
 
 game = Game()
 pyxel.run(game.update, game.draw)
+
 
