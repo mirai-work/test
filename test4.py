@@ -93,7 +93,7 @@ class Player:
             self.invincible -= 1
 
         # ===== SHIFT + Z で通常弾連射 =====
-        if pyxel.btn(pyxel.KEY_SHIFT) and pyxel.btn(pyxel.KEY_Z):
+        if pyxel.btn(pyxel.KEY_SHIFT) and pyxel.btn(pyxel.KEY_Z) or pyxel.btn(pyxel.GAMEPAD1_BUTTON_A):
             self.auto_timer += 1
             if self.auto_timer % 5 == 0:
                 game.player_bullets.add(
@@ -326,4 +326,5 @@ class Game:
 
 
 Game()
+
 
